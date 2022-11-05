@@ -38,4 +38,12 @@ public class Application {
         return input;
 
     }
+
+    public static Exception occurError() {
+        try {
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
