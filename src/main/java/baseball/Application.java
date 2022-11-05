@@ -25,4 +25,17 @@ public class Application {
         }
         return answer;
     }
+
+    public static List<Integer> getNumber(String num) {
+        System.out.println("숫자를 입력해주세요 : ");
+        List<Integer> input = new ArrayList<>();
+        if (num.length() > 3) {
+            //에러 발생시키는 함수
+        }
+        for (int i = 0; i < 3; i++){
+            input.add(Integer.parseInt(String.valueOf(num.charAt(i))));
+        }
+        return input;
+
+    }
 }
