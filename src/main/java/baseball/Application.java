@@ -11,10 +11,18 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         startGame();
-        List<Integer> answer = makeThreeDigit();
-        List<Integer> input = getNumber();
-        List<Integer> result = getResult(answer, input);
-        printResult(result);
+        while(true) {
+            List<Integer> answer = makeThreeDigit();
+            List<Integer> input = getNumber();
+            List<Integer> result = getResult(answer, input);
+            if (!printResult(result)) {
+                continue;
+            } else {
+                if (replayOrExit() == 1) {
+                    continue;
+                }
+            }
+        }
     }
 
     public static void startGame() {
@@ -89,7 +97,8 @@ public class Application {
         return false;
     }
 
-    public static void printResult(List<Integer> result) {
+    public static boolean printResult(List<Integer> result) {
+        int flag = 0;
         if (result.get(0) == 0 && result.get(1) == 0) {
             System.out.println("낫싱");
         } else if (result.get(0) > 0 && result.get(1) == 0){
@@ -100,8 +109,10 @@ public class Application {
             System.out.println("스트라이크 " + result.get(0) + "볼 " + result.get(1));
             if (result.get(0) == 3) {
                 endGame();
+                return true;
             }
         }
+        return false;
     }
 
     public static void endGame() {
