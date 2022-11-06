@@ -4,13 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         startGame();
         List<Integer> answer = makeThreeDigit();
-        List<Integer> input = getNumber(args[0]);
+        List<Integer> input = getNumber();
         List<Integer> result = getResult(answer, input);
         printResult(result);
     }
@@ -29,9 +30,14 @@ public class Application {
         return answer;
     }
 
-    public static List<Integer> getNumber(String num) {
+    public static List<Integer> getNumber() {
         System.out.println("숫자를 입력해주세요 : ");
+
+        Scanner in = new Scanner(System.in);
+        String num = in.next();
+
         List<Integer> input = new ArrayList<>();
+
         if (num.length() > 3) {
             occurError();
         }
