@@ -10,6 +10,8 @@ public class Application {
         // TODO: 프로그램 구현
         startGame();
         List<Integer> answer = makeThreeDigit();
+        List<Integer> input = getNumber(args[0]);
+        getResult(answer, input);
     }
 
     public static void startGame() {
@@ -47,27 +49,36 @@ public class Application {
         }
     }
 
-    public static List<Integer> getResult(List<String> answer, List<String> input) {
-
-        int strike = 0, ball = 0;
-
-        for (int i = 0; i < 3; i++) {
-            if (answer.contains(input.get(i))) {
-                for (int j = 0; j < 3; j++) {
-                    if (answer.get(j) == input.get(i)) {
-                        strike++;
-                    } else {
-                        ball++;
-                    }
-                }
-            }
-        }
+    public static List<Integer> getResult(List<Integer> answer, List<Integer> input) {
 
         List<Integer> result = new ArrayList<>();
-
+        int strike = 0, ball = 0;
         result.add(strike);
         result.add(ball);
 
+        for (int i = 0; i < 3; i++) {
+            if (answer.contains(input.get(i))) {
+                getBall(answer, input.get(i), strike, ball);
+            }
+        }
         return result;
+    }
+
+    public static void getBall(List<Integer> answer, int input, int strike, int ball) {
+        if (answer.contains(input)) {
+            if (getStrike(answer, input, strike) == false) {
+                ball++;
+            }
+        }
+    }
+
+    public static boolean getStrike(List<Integer> answer, int input, int strike) {
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i) == input) {
+                strike++;
+                return true;
+            }
+        }
+        return false;
     }
 }
