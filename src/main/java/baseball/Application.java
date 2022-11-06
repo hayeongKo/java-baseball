@@ -11,7 +11,8 @@ public class Application {
         startGame();
         List<Integer> answer = makeThreeDigit();
         List<Integer> input = getNumber(args[0]);
-        getResult(answer, input);
+        List<Integer> result = getResult(answer, input);
+        printResult(result);
     }
 
     public static void startGame() {
@@ -80,5 +81,17 @@ public class Application {
             }
         }
         return false;
+    }
+
+    public static void printResult(List<Integer> result) {
+        if (result.get(0) == 0 && result.get(1) == 0) {
+            System.out.println("낫싱");
+        } else if (result.get(0) > 0 && result.get(1) == 0){
+            System.out.println("스트라이크 " + result.get(0));
+        } else if (result.get(0) == 0 && result.get(1) > 0) {
+            System.out.println("볼 " + result.get(0));
+        } else {
+            System.out.println("스트라이크 " + result.get(0) + "볼 " + result.get(1));
+        }
     }
 }
