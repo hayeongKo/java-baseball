@@ -31,8 +31,6 @@ public class Application {
         List<Integer> input = new ArrayList<>();
         if (num.length() > 3) {
             occurError();
-            System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
-            System.exit(0);
         }
         for (int i = 0; i < 3; i++){
             input.add(Integer.parseInt(String.valueOf(num.charAt(i))));
