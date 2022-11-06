@@ -46,4 +46,28 @@ public class Application {
             throw new RuntimeException(e);
         }
     }
+
+    public static List<Integer> getResult(List<String> answer, List<String> input) {
+
+        int strike = 0, ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (answer.contains(input.get(i))) {
+                for (int j = 0; j < 3; j++) {
+                    if (answer.get(j) == input.get(i)) {
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+                }
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+
+        result.add(strike);
+        result.add(ball);
+
+        return result;
+    }
 }
