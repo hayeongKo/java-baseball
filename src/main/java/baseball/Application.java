@@ -33,7 +33,7 @@ public class Application {
 
     public static List<Integer> getNumber() {
         System.out.println("숫자를 입력해주세요 : ");
-        
+
         String num = Console.readLine();
 
         List<Integer> input = new ArrayList<>();
@@ -98,6 +98,13 @@ public class Application {
             System.out.println("볼 " + result.get(0));
         } else {
             System.out.println("스트라이크 " + result.get(0) + "볼 " + result.get(1));
+            if (result.get(0) == 3) {
+                endGame();
+            }
         }
+    }
+
+    public static void endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다. 게임 종료");
     }
 }
